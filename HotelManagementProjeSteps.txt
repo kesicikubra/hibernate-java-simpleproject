@@ -1,0 +1,327 @@
+--Step 1 read the documention of project
+--Step 2 create new project
+--Step 3 add needed dependencies in pom.xml
+ <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+ <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+ <!-- https://mvnrepository.com/artifact/org.ehcache/ehcache -->
+ <!-- https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-jcache -->
+
+ --Step 4 create hibernate.cfg.xml
+ <?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-configuration PUBLIC
+
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+
+        <!-- Database connection settings -->
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+
+        <property name="connection.url">jdbc:postgresql://localhost:5432/HotelManagementSystem_db</property>
+
+        <property name="connection.username">dev_user</property>
+
+        <property name="connection.password">password</property>
+
+
+
+        <!-- Other Hibernate configuration properties -->
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL9Dialect</property>
+
+
+
+        <property name="hbm2ddl.auto">update</property>
+
+        <property name="show_sql">true</property>
+
+        <property name="format_sql">true</property>
+        <!--        This property enables the second-level cache in Hibernate. When set to "true",-->
+        <property name="hibernate.cache.use_second_level_cache">true</property>
+        <!--        This property enables the query cache in Hibernate. When set to "true",-->
+        <property name="hibernate.cache.use_query_cache">true</property>
+        <!--        This property specifies the implementation class for the cache region factory in Hibernate-->
+        <property name="hibernate.cache.region.factory_class">org.hibernate.cache.jcache.internal.JCacheRegionFactory</property>
+        <!--        This property specifies the cache provider implementation class to be used by Hibernate-->
+        <property name="hibernate.javax.cache.provider">org.ehcache.jsr107.EhcacheCachingProvider</property>
+
+        <!-- Mapping entity classes -->
+
+
+    </session-factory>
+
+</hibernate-configuration>
+
+--Step 5 create db on pg admin
+name:HotelManagementSystem_db
+user:dev_user
+password:password
+
+--Step 6 create packages
+com.tpe.HotelManagementSystem 
+	config
+	domain
+	controller
+	service
+	repository
+	exception 
+
+--Step 7 create main.class end HotelManagementSystem.class in controller package 
+--Step 8 create exeption classes 
+HotelResourceNotFoundException
+RoomResourceNotFounException
+ReservationNotFoundException
+GuestNotFoundException
+
+--Step 9 create Hotel.class and Room.class into domain package 
+--Step 10 create HibernateUtils.class into config package
+--Step 10a create sessionFactory method 
+--Step 10b create getSessionFactory method
+--Step 10c create sessionClose method
+--Step 11 create Scanner in HotelManagementSystem.class
+--Step 12 create displayMenuHotelManagementSystem()
+--Step 13 call displayMenuHotelManagementSystem() method
+--Step 14 create other methods in HotelManagementSystem.class 
+--Step 14a create displayHotelOperationsMenu() method
+--Step 14b create displayRoomOperationsMenu() method
+--Step 14c create displayGuestOperationsMenu() method
+--Step 15 add Hoteş,Room mapping into hibernate.cfg.xml 
+        <mapping class="com.tpe.hotelManagementSystem.domain.Hotel" />
+        <mapping class="com.tpe.hotelManagementSystem.domain.Room" />
+--Step 16 run end control 
+--Step 17 add needed annotations on Hotel.class
+--Step 17a add fields in Hotel.class
+--Step 18 add needed annotations on Room.class
+--Step 18a add fields in Room.class
+
+--Step 19a add ManyToOne ralationship in Room.class 
+--Step 19b constructor
+--Step 19c getter and setter
+--Step 19d toString
+
+--Step 20a OneToMany ralationship in Hotel.class
+--Step 20b constructor
+--Step 20c getter and setter
+--Step 20d toString
+
+--Step 21 create HotelRepository interfece
+--Step 21a create saveHotel method
+--Step 22 create HotelRepositoryImpl.class and implement from HotelRepository
+and implements method 
+--Step 22a create saveHotel
+--Step 23 create HotelService interface 
+--Step 23a create saveHotel method
+--Step 24 create HotelService.class
+and implements method 
+--Step 24a create saveHotel method and implement from HotelService
+
+--Step 25 create hotelRepository constructor injection
+add methods parameters
+--Step 25a call hotelService.saveHotel
+
+run the app and save some hotel examples
+
+--Step 26a create findHotelById in HotelRepository
+--Step 26b implements methods in HotelRepositoryImpl and write findHotelById methods 
+--Step 26c create findHotelById in HotelService
+--Step 26d implements methods in HotelServiceImpl and write findHotelById methods 
+--Step 26e call hotelService.findHotelById from case 3 into HotelManagementSystem
+
+run and control app
+--Step 27 create RoomRepository interfece 
+--Step 27a create saveRoom method
+--Step 27b create RoomRepositoryImpl.class and implements from RoomRepository
+and implements method
+--Step 27c write saveRoom method codes 
+--Step 28 create RoomService interface
+--Step 28a create saveRoom method
+--Step 28b create RoomServiceImpl.class and implements from RoomService
+and implements method
+--Step 29 write saveRoom codes
+--Step 30a create roomRepository constructor injection
+add methods parameters
+--Step 30b call roomService.saveRoom from case1
+run and save some rooms 
+
+--Step 31a create deleteHotelById methods in HotelRepository
+--Step 31b implements methods on HotelRepositoryImpl
+--Step 31c write deleteHotelById methods codes
+--Step 32a create deleteHotelById methods in HotelService 
+--Step 32b implements methods on HotelServiceImpl
+--Step 32c write deleteHotelById methods codes
+--Step 32d call hotelService.deleteHotelById from case1
+
+run and control deleteHotelById methods
+--Step 33 create Guest.class under domain package  
+--Step 33a add fields add needed annotations
+--Step 33b create Address.class under domain package and add Embeddable annotation
+--Step 33c add fields
+--Step 33d add getter and setter
+--Step 33e add toString
+--Step 33f add fields on Guest.class 
+--Step 33g add getter and setter
+--Step 33h add to String
+--Step 33i add mapping Guest and Address Hibernate.cfg.xml
+
+--Step 34 create deleteHotelById methods in GuestRepository
+--Step 34a create saveGuest method
+--Step 34b create GuestImpl.class and implements from GuestRepository
+and implements method
+--Step 35c write saveGuest methods codes
+--Step 35d create GuestService interface
+--Step 35e create saveGuest method
+--Step 35f create GuestServiceImpl.class and implements from GuestService
+and implements method
+--Step 35g scanner
+--Step 35h create guestRepository constructor injection
+--Step 35i write saveGuest method codes
+--Step 36a create guestRepository,guestService instance
+and add parameters into HotelManagementSystem
+--Step 36b call guestService.saveGuest methods from case 1
+
+run and control methods
+--Step 37a create findAllHotels in HotelRepository
+--Step 37b implements methods in HotelRepositoryImpl
+--Step 37c write finaAllHotels codes
+--Step 37d create findAllHotels in HotelService
+--Step 37e implement methods in HotelServiceImpl
+--Step 37f write findAllHotels codes
+--Step 37g call hotelService.findAllHotels from case 4
+
+--Step 38a create updateHotel
+--Step 38b implements methods in HotelRepositoryImpl
+--Step 38c write updateHotel codes
+--Step 38d create updateHotel in HotelService
+--Step 38f write updateHotel codes
+--Step 38g complete update method and call hotelService.updateHotel from case 5
+
+--Step 39a create findRoomById in RoomRepository
+--Step 39b implements methods in RoomRepositoryImpl
+--Step 39c write findRoomById codes
+--Step 39d create findRoomById in RoomService
+--Step 39e implement methods in RoomServiceImpl
+--Step 39f write findRoomById codes
+--Step 39g call roomService.findARoomById from case 2
+
+--Step 40a create findAllRoom in RoomRepository
+--Step 40b implements methods in RoomRepositoryImpl
+--Step 40c write findAllRoom codes
+--Step 40d create findAllRoom in RoomService
+--Step 40e implement methods in RoomServiceImpl
+--Step 40f write findAllRoom codes
+--Step 40g call roomService.findAllRoom from case 4
+
+--Step 41a create deleteRoomById in RoomRepository
+--Step 41b implements methods in RoomRepositoryImpl
+--Step 41c write deleteRoomById codes
+--Step 41d create deleteRoomById in RoomService
+--Step 41e implement methods in RoomServiceImpl
+--Step 41f write deleteRoomById codes
+--Step 41g call roomService.deleteRoomById from case 3
+
+--Step 42a crate Reservation.class under domain package 
+--Step 42b add needed annotations
+--Step 42c add mapping Reservation hibernate.cfg.xml
+--Step 42d add fields
+--Step 42e Add ManyToOne relationship between Reservation and Guest
+--Step 42f Add ManyToOne relationship between Reservation and Room
+--Step 42g getter and setter
+--Step 42h add toString
+--Step 48i add OneToMany relationship between Guest and Reservatin 
+--Step 48j add getter and setter Reservation in Guest.class 
+--Step 48k delete toString method and rewrite
+
+practice 6
+
+--Step 48l add OneToMany relationship between Room and Reservatin 
+--Step 148m getter and setter for reservation
+--Step 48n toString for reservation
+
+Not:
+@OneToOne default Fetchtype eager 
+@OneToMany default Fetchtype lazy
+@ManyToMany default Fetchtype lazy 
+@ManyToOne default Fetchtype eager
+
+
+--Step 49 create ReservationRepository interface 
+--Step 49a create saveReservation
+--Step 49b create ReservationRepositoryImpl and implements methods
+--Step 49c write saveResevation codes
+--Step 49d create ReservationService interface 
+--Step 49e create saveReservation
+--Step 49f create ReservationServiceImpl and implements methods
+
+reservation işlemleri içinde room ve guet kullanılacağı için önce findguetbyıd methodunu yazalım
+
+--Step50a create findGuestById in GuestRepository
+--Step 50b implements methods in GuestRepositoryImpl 
+--Step 50c write findGuestById codes
+--Step 50d create findGuestById in GuestService
+--Step 50f implements methods in GuestServiceImpl
+--Step 50g write findGuestById codes
+--Step 50h call guestService.findGuestById from case 2
+
+--Step 51a create scanner
+--Step 51b create constructor injection ResrevationRepository,GuestRepository,RoomRepository
+--Step 51c write saveReservation codes
+--Step 51d Create instance of ReservationRepository
+--Step 51e call reservationService.saveResrevation from case1 
+
+run and test methods
+
+--Step 52a create deleteGuestById in GuestRepository
+--Step 52b implements methods GuestRepositoryImpl
+--Step 52c write deleteguestbyıd codes
+--Step 52d create deleteGuestById in GuestService
+--Step 52e implements methods in GuestServiceImpl
+--Step 52f write deleteguestbyıd codes
+--Step 52g call gueestService.deleteguestbyıd from case 3
+
+
+--Step 53a create findAllGuest in GuestRepository
+--Step 53b implements methods GuestRepositoryImpl
+--Step 53c write findAllGuest codes
+--Step 53d create findAllGuest in GuestService
+--Step 53e implements methods in GuestServiceImpl
+--Step 53f write findAllGuest codes
+--Step 53g call gueestService.findAllGuest from case 4
+
+
+--Step 54a create findReservationbyId in ReservationRepository
+--Step 54b implements methods ReservationRepositoryImpl
+--Step 54c write findReservationbyId codes
+--Step 54d create findReservationbyId in ReservationService
+--Step 54e implements methods in ReservationServiceImpl
+--Step 54f write findReservationbyId codes
+--Step 54g call gueestService.findReservationbyId from case 2
+
+--Step 55a create findAllReservations in ReservationRepository
+--Step 55b implements methods ReservationRepositoryImpl
+--Step 55c write findAllReservations codes
+--Step 55d create findAllReservations in ReservationService
+--Step 55e implements methods in ReservationServiceImpl
+--Step 55f write findAllReservations codes
+--Step 55g call gueestService.findAllReservations from case 3
+
+
+--Step 56a create deleteReservationById in ReservationRepository
+--Step 56b implements methods ReservationRepositoryImpl
+--Step 56c write deleteReservationById codes
+--Step 56d create deleteReservationById in ReservationService
+--Step 56e implements methods in ReservationServiceImpl
+--Step 56f write deleteReservationById codes
+--Step 56g call gueestService.deleteReservationById from case 4
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-configuration PUBLIC
+
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+
+        <!-- Database connection settings -->
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+
+        <property name="connection.url">jdbc:postgresql://localhost:5432/HotelManagementSystem_db</property>
+
+        <property name="connection.username">dev_user</property>
+
+        <property name="connection.password">password</property>
+
+
+
+        <!-- Other Hibernate configuration properties -->
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL9Dialect</property>
+
+
+
+        <property name="hbm2ddl.auto">update</property>
+
+        <property name="show_sql">true</property>
+
+        <property name="format_sql">true</property>
+        <!--        This property enables the second-level cache in Hibernate. When set to "true",-->
+        <property name="hibernate.cache.use_second_level_cache">true</property>
+        <!--        This property enables the query cache in Hibernate. When set to "true",-->
+        <property name="hibernate.cache.use_query_cache">true</property>
+        <!--        This property specifies the implementation class for the cache region factory in Hibernate-->
+        <property name="hibernate.cache.region.factory_class">org.hibernate.cache.jcache.internal.JCacheRegionFactory</property>
+        <!--        This property specifies the cache provider implementation class to be used by Hibernate-->
+        <property name="hibernate.javax.cache.provider">org.ehcache.jsr107.EhcacheCachingProvider</property>
+
+        <!-- Mapping entity classes -->
+        <!-- Step 16 add Hotel and Room-->
+        <mapping class="com.tpe.hotelManagementSystem.domain.Hotel" />
+        <mapping class="com.tpe.hotelManagementSystem.domain.Room" />
+        <!-- Step 33i add Guest and Address-->
+        <mapping class="com.tpe.hotelManagementSystem.domain.Guest" />
+        <mapping class="com.tpe.hotelManagementSystem.domain.Address" />
+        <!-- Step 42c add Reservation-->
+        <mapping class="com.tpe.hotelManagementSystem.domain.Reservation" />
+
+
+
+    </session-factory>
+
+</hibernate-configuration>
